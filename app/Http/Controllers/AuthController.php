@@ -23,7 +23,7 @@ class AuthController extends Controller
             $account->user_id = $user->id;
             $account->save();
 
-            return redirect()->back();
+            return redirect('/');
         }
     }
 
@@ -53,5 +53,11 @@ class AuthController extends Controller
         $details = User::where('id', Auth::user()->id)->first();
 
         return view('/dashboard', \compact('account', 'details'));
+    }
+
+    public function logout(){
+        Auth::logout();
+
+        return \redirect('/');
     }
 }

@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class AuctionController extends Controller
 {
     public function createAuction(Request $request){
+
+        if(!Auth::check()){
+            return \redirect()->back();
+        }
+
         $current = Carbon::now();
         $path = $request->file('image')->store('auction_images');
 
@@ -19,7 +24,7 @@ class AuctionController extends Controller
         $auction->start_time = $current; //set current date
         $auction->description = $request->description;
         $auction->end_time = $current->addMinute(2); //should be 24 hours but for testing purposes will be 2-5 mins
-        $auction->owner_id = 1;  //currently set to 1 for testing
+        $auction->owner_id = Auth::user()->id;
         $auction->image = $path;
 
         if($auction->save()){

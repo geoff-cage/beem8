@@ -21,6 +21,8 @@ Route::post('/auction', [AuctionController::class, 'createAuction']);
 Route::get('/auctions', [AuctionController::class, 'displayAll']);
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard',[AuthController::class, 'showDashboard']);
