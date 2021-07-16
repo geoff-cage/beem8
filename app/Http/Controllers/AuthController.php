@@ -40,4 +40,8 @@ class AuthController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
+
+    public function showDashboard(){
+        return view('/dashboard');
+    }
 }

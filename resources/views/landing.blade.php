@@ -103,9 +103,7 @@ use Illuminate\Support\Facades\Storage;
     </div>
 </section>
 
-<footer class="text-center py-3 mt-4">
-    <small> Beem Hackathon 2021 </small>
-</footer>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

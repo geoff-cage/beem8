@@ -73,8 +73,6 @@
         </div>
 </section>
 
-<footer class="text-center py-3 mt-4">
-    <small> Beem Hackathon 2021 </small>
-</footer>
+
 
 @endsection
