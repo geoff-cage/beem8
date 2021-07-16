@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Account;
 
 class AuthController extends Controller
 {
@@ -17,6 +18,11 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
 
         if($user->save()){
+
+            $account = new Account;
+            $account->user_id = $user->id;
+            $account->save();
+
             return redirect()->back();
         }
     }
@@ -42,6 +48,10 @@ class AuthController extends Controller
     }
 
     public function showDashboard(){
-        return view('/dashboard');
+
+        $account = Account::where('user_id',Auth::user()->id)->first();
+        $details = User::where('id', Auth::user()->id)->first();
+
+        return view('/dashboard', \compact('account', 'details'));
     }
 }

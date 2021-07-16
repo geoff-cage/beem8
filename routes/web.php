@@ -20,6 +20,10 @@ Route::post('/auction', [AuctionController::class, 'createAuction']);
 
 Route::get('/auctions', [AuctionController::class, 'displayAll']);
 
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard',[AuthController::class, 'showDashboard']);
 });
+
+
